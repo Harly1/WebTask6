@@ -1,5 +1,7 @@
 package servlets;
 
+import resources.TestResource;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +19,15 @@ public class ResourceServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String path = req.getParameter("path");
+        TestResource resource = (TestResource) ReadXMLFileSAX.readXML("./data/resource.xml");
+        resp.getWriter().println(resource);
+
+        String name =  resource.getName();
+        int age =  resource.getAge();
+
+        resp.getWriter().println(path);
+        resp.getWriter().println(name);
+        resp.getWriter().println(age);
 
     }
 }
