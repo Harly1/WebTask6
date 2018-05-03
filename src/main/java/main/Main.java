@@ -1,17 +1,17 @@
 package main;
 
-
-
 import accountServer.AccountServer;
 import accountServer.AccountServerController;
 import accountServer.AccountServerControllerMBean;
 import accountServer.AccountServerI;
+
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+
 import servlets.ResourceServlet;
 
 import javax.management.MBeanServer;
@@ -23,7 +23,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        context.addServlet(new ServletHolder(new ResourceServlet()),"/resources");
+        context.addServlet(new ServletHolder(new ResourceServlet()),ResourceServlet.PAGE_URL);
 
         AccountServerI accountServer = new AccountServer(1);
 
@@ -34,7 +34,7 @@ public class Main {
 
 
         ResourceHandler resource_handler = new ResourceHandler();
-        resource_handler.setResourceBase("");
+        resource_handler.setResourceBase("publicPage/index.html");
 
         HandlerList handlers = new HandlerList();
         handlers.setHandlers(new Handler[]{resource_handler, context});
