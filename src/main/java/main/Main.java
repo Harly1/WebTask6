@@ -1,6 +1,7 @@
 package main;
 
 
+
 import accountServer.AccountServer;
 import accountServer.AccountServerController;
 import accountServer.AccountServerControllerMBean;
@@ -20,15 +21,17 @@ import java.util.logging.Logger;
 
 public class Main {
     public static void main(String[] args) throws Exception {
+
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.addServlet(new ServletHolder(new ResourceServlet()),"/resources");
 
+        AccountServerI accountServer = new AccountServer(1);
 
-
-
+        AccountServerControllerMBean serverStatistics = new AccountServerController(accountServer);
         MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
         ObjectName name = new ObjectName("Admin:type=ResourceServerController");
-        mbs.registerMBean(,name);
+        mbs.registerMBean(serverStatistics,name );
+
 
         ResourceHandler resource_handler = new ResourceHandler();
         resource_handler.setResourceBase("");

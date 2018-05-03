@@ -52,6 +52,12 @@
             <version>${org.mockito.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.sun.jmx</groupId>
+            <artifactId>jmxri</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+
     </dependencies>
 
 
