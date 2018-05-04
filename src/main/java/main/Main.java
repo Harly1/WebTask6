@@ -12,6 +12,7 @@ import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
+import resourceService.ResourceService;
 import servlets.ResourceServlet;
 
 import javax.management.MBeanServer;
@@ -21,9 +22,10 @@ import java.util.logging.Logger;
 
 public class Main {
     public static void main(String[] args) throws Exception {
+        ResourceService resourceService = new ResourceService();
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        context.addServlet(new ServletHolder(new ResourceServlet()),ResourceServlet.PAGE_URL);
+        context.addServlet(new ServletHolder(new ResourceServlet(resourceService)),ResourceServlet.PAGE_URL);
 
         AccountServerI accountServer = new AccountServer("User",30);
 
@@ -44,6 +46,8 @@ public class Main {
         server.start();
         Logger.getGlobal().info("Server started");
         server.join();
+
+
     }
 
 }
