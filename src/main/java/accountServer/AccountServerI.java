@@ -17,4 +17,8 @@ public interface AccountServerI {
     void setUsersLimit(int usersLimit);
 
     int getUsersCount();
+
+    int getUsersAge();
+
+    String getUsersName();
 }

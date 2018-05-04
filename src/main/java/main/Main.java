@@ -25,7 +25,7 @@ public class Main {
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.addServlet(new ServletHolder(new ResourceServlet()),ResourceServlet.PAGE_URL);
 
-        AccountServerI accountServer = new AccountServer(1);
+        AccountServerI accountServer = new AccountServer("User",30);
 
         AccountServerControllerMBean serverStatistics = new AccountServerController(accountServer);
         MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
@@ -39,7 +39,7 @@ public class Main {
         HandlerList handlers = new HandlerList();
         handlers.setHandlers(new Handler[]{resource_handler, context});
 
-        Server server = new Server(8080);
+        Server server = new Server(5050);
         server.setHandler(handlers);
         server.start();
         Logger.getGlobal().info("Server started");

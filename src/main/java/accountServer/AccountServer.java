@@ -11,10 +11,12 @@ package accountServer;
 public class AccountServer implements AccountServerI {
     private int usersCount;
     private int usersLimit;
+    private int age;
+    private String name;
 
-    public AccountServer(int usersLimit) {
-        this.usersCount = 0;
-        this.usersLimit = usersLimit;
+    public AccountServer(String name, int age) {
+        this.age = age;
+        this.name = name;
     }
 
 
@@ -32,6 +34,15 @@ public class AccountServer implements AccountServerI {
         return usersLimit;
     }
 
+
+    public int getUsersAge() {
+        return age;
+    }
+
+    public String getUsersName() {
+
+        return name;
+    }
 
     public void setUsersLimit(int usersLimit) {
         this.usersLimit = usersLimit;

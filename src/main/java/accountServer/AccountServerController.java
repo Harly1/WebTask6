@@ -16,6 +16,16 @@ public class AccountServerController implements AccountServerControllerMBean {
     }
 
 
+    @Override
+    public int getage() {
+        return accountServer.getUsersAge() ;
+    }
+
+    @Override
+    public String getname() {
+        return accountServer.getUsersName();
+    }
+
     public int getUsers() {
         return accountServer.getUsersCount();
     }
