@@ -7,6 +7,18 @@
     <groupId>WebTask6</groupId>
     <artifactId>Task6</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>7</source>
+                    <target>7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
 
@@ -62,6 +74,18 @@
             <groupId>xml-sax</groupId>
             <artifactId>xml-sax</artifactId>
             <version>0.1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.xml.parsers</groupId>
+            <artifactId>jaxp-api</artifactId>
+            <version>1.4.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.xml.parsers</groupId>
+            <artifactId>aixport</artifactId>
+            <version>1.3.1</version>
         </dependency>
 
     </dependencies>
