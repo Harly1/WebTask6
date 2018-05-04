@@ -12,7 +12,9 @@ import java.io.IOException;
 
 
 public class ResourceServlet extends HttpServlet {
+
     public static final String PAGE_URL = "/resources";
+
     private ResourceService resourceService;
 
     public ResourceServlet(ResourceService resourceService){
